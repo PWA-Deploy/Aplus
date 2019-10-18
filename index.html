@@ -1,0 +1,62 @@
+<!DOCTYPE html><html lang=en><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><!--[if IE]><link rel="icon" href="/favicon.ico"><![endif]--><title>Ryan Smells Like</title><link href=/css/app.0928d202.css rel=preload as=style><link href=/js/app.7ad290d0.js rel=preload as=script><link href=/js/chunk-vendors.634093dc.js rel=preload as=script><link href=/css/app.0928d202.css rel=stylesheet><link rel=icon type=image/png sizes=32x32 href=/img/icons/favicon-32x32.png><link rel=icon type=image/png sizes=16x16 href=/img/icons/favicon-16x16.png><link rel=manifest href=/manifest.json><meta name=theme-color content=#4DBA87><meta name=apple-mobile-web-app-capable content=no><meta name=apple-mobile-web-app-status-bar-style content=default><meta name=apple-mobile-web-app-title content=pwa-deaf><link rel=apple-touch-icon href=/img/icons/apple-touch-icon-152x152.png><link rel=mask-icon href=/img/icons/safari-pinned-tab.svg color=#4DBA87><meta name=msapplication-TileImage content=/img/icons/msapplication-icon-144x144.png><meta name=msapplication-TileColor content=#000000></head><body><div class=words contenteditable></div><script>window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const recognition = new SpeechRecognition();
+        recognition.interimResults = true;
+        recognition.lang = 'en-US';
+        
+        let p = document.createElement('p');
+        const words = document.querySelector('.words');
+        words.appendChild(p);
+        recognition.addEventListener('result', e => {
+          const transcript = Array.from(e.results)
+            .map(result => result[0])
+            .map(result => result.transcript)
+            .join('');
+            const poopScript = transcript.replace(/poop|poo|dump|dumps/gi, '💩');
+            p.textContent = poopScript;
+            if (e.results[0].isFinal) {
+              p = document.createElement('p');
+              words.appendChild(p);
+            }
+        });
+        recognition.addEventListener('end', recognition.start);
+        recognition.start();</script><style>html {
+            font-size: 10px;
+          }
+          body {
+            background: #2e3035;
+            font-family: 'helvetica neue';
+            font-weight: 200;
+            font-size: 20px;
+          }
+          .words {
+            max-width: 500px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 5px;
+            box-shadow: 10px 10px 0 rgba(0,0,0,0.1);
+            padding: 1rem 2rem 1rem 5rem;
+            background: -webkit-gradient(linear, 0 0, 0 100%, from(#d9eaf3), color-stop(4%, #fff)) 0 4px;
+            background-size: 100% 3rem;
+            position: relative;
+            line-height: 3rem;
+          }
+          
+          p {
+            margin: 0 0 3rem;
+          }
+          .words:before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            top: 0;
+            left: 30px;
+            bottom: 0;
+            border: 1px solid;
+            border-color: transparent #efe4e4;
+          }
+
+          h3 {
+            color: black;
+            font-size: 2.5em;
+            -webkit-text-stroke: 1px gray;
+          }</style><noscript><strong>We're sorry but pwa-deaf doesn't work properly without JavaScript enabled. Please enable it to continue.</strong></noscript><script src=/js/chunk-vendors.634093dc.js></script><script src=/js/app.7ad290d0.js></script></body></html>
